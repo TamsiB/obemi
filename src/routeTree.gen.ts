@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as CommitmentRouteImport } from './routes/commitment'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PillarsRouteImport } from './routes/pillars'
 import { Route as TheoryOfChangeRouteImport } from './routes/theory-of-change'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
@@ -23,6 +26,21 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommitmentRoute = CommitmentRouteImport.update({
+  id: '/commitment',
+  path: '/commitment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PillarsRoute = PillarsRouteImport.update({
@@ -44,6 +62,9 @@ const VisionMissionRoute = VisionMissionRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commitment': typeof CommitmentRoute
+  '/impact': typeof ImpactRoute
+  '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -51,6 +72,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commitment': typeof CommitmentRoute
+  '/impact': typeof ImpactRoute
+  '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -59,6 +83,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/commitment': typeof CommitmentRoute
+  '/impact': typeof ImpactRoute
+  '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
   '/vision-mission': typeof VisionMissionRoute
@@ -66,13 +93,31 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/pillars' | '/theory-of-change' | '/vision-mission'
+    | '/'
+    | '/about'
+    | '/commitment'
+    | '/impact'
+    | '/partners'
+    | '/pillars'
+    | '/theory-of-change'
+    | '/vision-mission'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/pillars' | '/theory-of-change' | '/vision-mission'
+  to:
+    | '/'
+    | '/about'
+    | '/commitment'
+    | '/impact'
+    | '/partners'
+    | '/pillars'
+    | '/theory-of-change'
+    | '/vision-mission'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/commitment'
+    | '/impact'
+    | '/partners'
     | '/pillars'
     | '/theory-of-change'
     | '/vision-mission'
@@ -81,6 +126,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CommitmentRoute: typeof CommitmentRoute
+  ImpactRoute: typeof ImpactRoute
+  PartnersRoute: typeof PartnersRoute
   PillarsRoute: typeof PillarsRoute
   TheoryOfChangeRoute: typeof TheoryOfChangeRoute
   VisionMissionRoute: typeof VisionMissionRoute
@@ -100,6 +148,27 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commitment': {
+      id: '/commitment'
+      path: '/commitment'
+      fullPath: '/commitment'
+      preLoaderRoute: typeof CommitmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pillars': {
@@ -129,6 +198,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CommitmentRoute: CommitmentRoute,
+  ImpactRoute: ImpactRoute,
+  PartnersRoute: PartnersRoute,
   PillarsRoute: PillarsRoute,
   TheoryOfChangeRoute: TheoryOfChangeRoute,
   VisionMissionRoute: VisionMissionRoute,
@@ -136,3 +208,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
