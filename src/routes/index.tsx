@@ -165,7 +165,7 @@ function Home() {
         />
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {PILLARS.map((pillar, i) => {
-            const Icon = PILLAR_ICONS[i];
+            const Icon = PILLAR_ICONS[i] ?? Leaf;
             return (
               <Reveal key={pillar.number} delay={i * 100}>
                 <article className="group h-full rounded-sm border border-border bg-card p-8 shadow-soft card-lift">
