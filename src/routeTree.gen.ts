@@ -10,33 +10,80 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as PillarsRouteImport } from './routes/pillars'
+import { Route as TheoryOfChangeRouteImport } from './routes/theory-of-change'
+import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarsRoute = PillarsRouteImport.update({
+  id: '/pillars',
+  path: '/pillars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheoryOfChangeRoute = TheoryOfChangeRouteImport.update({
+  id: '/theory-of-change',
+  path: '/theory-of-change',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisionMissionRoute = VisionMissionRouteImport.update({
+  id: '/vision-mission',
+  path: '/vision-mission',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/pillars': typeof PillarsRoute
+  '/theory-of-change': typeof TheoryOfChangeRoute
+  '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/pillars': typeof PillarsRoute
+  '/theory-of-change': typeof TheoryOfChangeRoute
+  '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/pillars': typeof PillarsRoute
+  '/theory-of-change': typeof TheoryOfChangeRoute
+  '/vision-mission': typeof VisionMissionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/about' | '/pillars' | '/theory-of-change' | '/vision-mission'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/pillars' | '/theory-of-change' | '/vision-mission'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/pillars'
+    | '/theory-of-change'
+    | '/vision-mission'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  PillarsRoute: typeof PillarsRoute
+  TheoryOfChangeRoute: typeof TheoryOfChangeRoute
+  VisionMissionRoute: typeof VisionMissionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +95,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pillars': {
+      id: '/pillars'
+      path: '/pillars'
+      fullPath: '/pillars'
+      preLoaderRoute: typeof PillarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/theory-of-change': {
+      id: '/theory-of-change'
+      path: '/theory-of-change'
+      fullPath: '/theory-of-change'
+      preLoaderRoute: typeof TheoryOfChangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vision-mission': {
+      id: '/vision-mission'
+      path: '/vision-mission'
+      fullPath: '/vision-mission'
+      preLoaderRoute: typeof VisionMissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  PillarsRoute: PillarsRoute,
+  TheoryOfChangeRoute: TheoryOfChangeRoute,
+  VisionMissionRoute: VisionMissionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
