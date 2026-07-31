@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Regenerative conservation, vocational training, community enterprise and wildlife coexistence in the Amboseli landscape.",
+          "Obemi is a community-led non-profit restoring ecosystems, empowering communities and building sustainable livelihoods in the Amboseli ecosystem, Loitokitok, Kenya.",
       },
     ],
   }),

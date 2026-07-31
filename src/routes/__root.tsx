@@ -80,15 +80,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Obemi CBO — Restore, Empower, Thrive" },
+      { title: "Obemi CBO — Restore. Empower. Thrive." },
       {
         name: "description",
         content:
-          "Obemi Community Based Organisation restores ecosystems and empowers communities in the Amboseli landscape, Loitokitok, Kenya.",
+          "Obemi is a community-led non-profit restoring ecosystems, empowering communities and building sustainable livelihoods in the Amboseli ecosystem, Loitokitok, Kenya.",
       },
       { name: "author", content: "Obemi Community Based Organisation" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Obemi CBO — Restore. Empower. Thrive." },
+      { name: "twitter:title", content: "Obemi CBO — Restore. Empower. Thrive." },
+      { property: "og:description", content: "Obemi is a community-led non-profit restoring ecosystems, empowering communities and building sustainable livelihoods in the Amboseli ecosystem, Loitokitok, Kenya." },
+      { name: "twitter:description", content: "Obemi is a community-led non-profit restoring ecosystems, empowering communities and building sustainable livelihoods in the Amboseli ecosystem, Loitokitok, Kenya." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/643efdb2-a765-4ddf-9750-950dfe891448/id-preview-2613d7ff--468e4cf3-006f-4b6b-8520-617ae23a9a0b.lovable.app-1785506815630.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/643efdb2-a765-4ddf-9750-950dfe891448/id-preview-2613d7ff--468e4cf3-006f-4b6b-8520-617ae23a9a0b.lovable.app-1785506815630.png" },
     ],
     links: [
       {
