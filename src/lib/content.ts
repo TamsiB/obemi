@@ -14,6 +14,7 @@ export const NAV = [
   { to: "/partners", label: "Our Partners" },
   { to: "/commitment", label: "Our Commitment" },
   { to: "/gallery", label: "Gallery" },
+  { to: "/contact", label: "Contact Us" },
 ] as const;
 
 export const CORE_VALUES = [
