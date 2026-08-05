@@ -62,6 +62,13 @@ function Home() {
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-sm bg-earth px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                Contact Us
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
                 to="/pillars"
                 className="inline-flex items-center gap-2 rounded-sm border border-primary-foreground/40 px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-colors duration-300 hover:bg-primary-foreground/10"
               >

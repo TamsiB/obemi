@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CommitmentRouteImport } from './routes/commitment'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as PartnersRouteImport } from './routes/partners'
@@ -32,6 +33,11 @@ const AboutRoute = AboutRouteImport.update({
 const CommitmentRoute = CommitmentRouteImport.update({
   id: '/commitment',
   path: '/commitment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/commitment': typeof CommitmentRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/partners': typeof PartnersRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/commitment': typeof CommitmentRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/partners': typeof PartnersRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/commitment': typeof CommitmentRoute
+  '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
   '/partners': typeof PartnersRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/commitment'
+    | '/contact'
     | '/gallery'
     | '/impact'
     | '/partners'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/commitment'
+    | '/contact'
     | '/gallery'
     | '/impact'
     | '/partners'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/commitment'
+    | '/contact'
     | '/gallery'
     | '/impact'
     | '/partners'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CommitmentRoute: typeof CommitmentRoute
+  ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
   PartnersRoute: typeof PartnersRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/commitment'
       fullPath: '/commitment'
       preLoaderRoute: typeof CommitmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CommitmentRoute: CommitmentRoute,
+  ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
   PartnersRoute: PartnersRoute,

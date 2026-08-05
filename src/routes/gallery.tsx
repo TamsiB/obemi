@@ -1,5 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { X } from "lucide-react";
 import { PageHero, Section, SectionHeading } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
@@ -42,29 +49,35 @@ function Gallery() {
         <div key={group.title} className={gi % 2 === 1 ? "bg-cream" : undefined}>
           <Section>
             <SectionHeading eyebrow={group.eyebrow} title={group.title} lead={group.caption} />
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {group.items.map((item, i) => (
-                <Reveal key={item.url} delay={i * 70}>
-                  <button
-                    type="button"
-                    onClick={() => setActive({ url: item.url, caption: group.caption })}
-                    className="group block w-full overflow-hidden rounded-sm border border-border bg-card text-left shadow-soft card-lift"
-                  >
-                    <div className="aspect-[4/3] overflow-hidden">
-                      <img
-                        src={item.url}
-                        alt={group.caption}
-                        loading="lazy"
-                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    </div>
-                    <p className="p-5 text-sm leading-relaxed text-muted-foreground">
-                      {group.caption}
-                    </p>
-                  </button>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal>
+              <Carousel opts={{ loop: true }} className="mt-12">
+                <CarouselContent>
+                  {group.items.map((item) => (
+                    <CarouselItem key={item.url} className="sm:basis-1/2 lg:basis-1/3">
+                      <button
+                        type="button"
+                        onClick={() => setActive({ url: item.url, caption: group.caption })}
+                        className="group block w-full overflow-hidden rounded-sm border border-border bg-card text-left shadow-soft card-lift"
+                      >
+                        <div className="aspect-[4/3] overflow-hidden">
+                          <img
+                            src={item.url}
+                            alt={group.caption}
+                            loading="lazy"
+                            className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        </div>
+                        <p className="p-5 text-sm leading-relaxed text-muted-foreground">
+                          {group.caption}
+                        </p>
+                      </button>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="-left-3" />
+                <CarouselNext className="-right-3" />
+              </Carousel>
+            </Reveal>
           </Section>
         </div>
       ))}
