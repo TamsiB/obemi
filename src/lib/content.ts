@@ -13,6 +13,7 @@ export const NAV = [
   { to: "/impact", label: "Our Impact" },
   { to: "/partners", label: "Our Partners" },
   { to: "/commitment", label: "Our Commitment" },
+  { to: "/gallery", label: "Gallery" },
 ] as const;
 
 export const CORE_VALUES = [
