@@ -128,7 +128,7 @@ function Contact() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Your name</Label>
-                  <Input id="name" name="name" maxLength={100} placeholder="Jane Doe" />
+                  <Input id="name" name="name" maxLength={100} placeholder="Name" />
                   {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
