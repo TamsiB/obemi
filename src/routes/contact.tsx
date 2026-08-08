@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { PageHero, Section } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { sendContactMessage } from "@/lib/contact.functions";
 import { ORG } from "@/lib/content";
+
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -52,10 +55,13 @@ type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
 function Contact() {
   const [errors, setErrors] = useState<Errors>({});
+  const [sending, setSending] = useState(false);
+  const send = useServerFn(sendContactMessage);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    const formEl = e.currentTarget;
+    const form = new FormData(formEl);
     const parsed = schema.safeParse({
       name: form.get("name"),
       email: form.get("email"),
@@ -75,14 +81,23 @@ function Contact() {
     }
 
     setErrors({});
-    const { name, email, subject, message } = parsed.data;
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email app to send the message.");
-    e.currentTarget.reset();
+    setSending(true);
+    try {
+      const result = await send({ data: parsed.data });
+      if (result.ok) {
+        toast.success("Thank you — your message has been sent to our team.");
+        formEl.reset();
+      } else {
+        toast.error(result.error);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(`Something went wrong. Please email us at ${CONTACT_EMAIL}.`);
+    } finally {
+      setSending(false);
+    }
   }
+
 
   return (
     <>
@@ -182,11 +197,17 @@ function Contact() {
 
               <button
                 type="submit"
-                className="group mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
+                disabled={sending}
+                className="group mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send message
-                <Send className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                {sending ? "Sending…" : "Send message"}
+                {sending ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <Send className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                )}
               </button>
+
             </form>
           </Reveal>
         </div>
