@@ -1,14 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { PageHero, Section } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { sendContactMessage } from "@/lib/contact.functions";
 import { ORG } from "@/lib/content";
+
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
