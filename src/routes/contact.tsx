@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { PageHero, Section } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { Input } from "@/components/ui/input";
@@ -30,7 +30,8 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const CONTACT_EMAIL = "info@obemicbo.org";
+const CONTACT_EMAIL = "info@obemi.co.ke";
+const CONTACT_PHONE = "0721874211";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name is too long"),
@@ -114,6 +115,18 @@ function Contact() {
                   className="mt-2 block text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   {CONTACT_EMAIL}
+                </a>
+              </div>
+              <div className="rounded-sm border border-border bg-card p-7 shadow-soft card-lift">
+                <Phone className="size-5 text-earth" />
+                <p className="mt-4 text-sm font-bold tracking-[0.16em] text-foreground uppercase">
+                  Phone
+                </p>
+                <a
+                  href={`tel:${CONTACT_PHONE}`}
+                  className="mt-2 block text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Tel: {CONTACT_PHONE}
                 </a>
               </div>
             </div>
