@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { PageHero, Section } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { Input } from "@/components/ui/input";
