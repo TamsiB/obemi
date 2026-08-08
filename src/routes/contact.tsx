@@ -197,11 +197,17 @@ function Contact() {
 
               <button
                 type="submit"
-                className="group mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
+                disabled={sending}
+                className="group mt-8 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-3.5 text-[0.75rem] font-bold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send message
-                <Send className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                {sending ? "Sending…" : "Send message"}
+                {sending ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <Send className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                )}
               </button>
+
             </form>
           </Reveal>
         </div>
