@@ -30,7 +30,8 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const CONTACT_EMAIL = "info@obemicbo.org";
+const CONTACT_EMAIL = "info@obemi.co.ke";
+const CONTACT_PHONE = "0721874211";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name is too long"),
