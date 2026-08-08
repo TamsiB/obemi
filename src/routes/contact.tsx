@@ -117,6 +117,18 @@ function Contact() {
                   {CONTACT_EMAIL}
                 </a>
               </div>
+              <div className="rounded-sm border border-border bg-card p-7 shadow-soft card-lift">
+                <Phone className="size-5 text-earth" />
+                <p className="mt-4 text-sm font-bold tracking-[0.16em] text-foreground uppercase">
+                  Phone
+                </p>
+                <a
+                  href={`tel:${CONTACT_PHONE}`}
+                  className="mt-2 block text-sm text-muted-foreground transition-colors hover:text-primary"
+                >
+                  Tel: {CONTACT_PHONE}
+                </a>
+              </div>
             </div>
           </Reveal>
 
