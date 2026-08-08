@@ -55,10 +55,13 @@ type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
 function Contact() {
   const [errors, setErrors] = useState<Errors>({});
+  const [sending, setSending] = useState(false);
+  const send = useServerFn(sendContactMessage);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    const formEl = e.currentTarget;
+    const form = new FormData(formEl);
     const parsed = schema.safeParse({
       name: form.get("name"),
       email: form.get("email"),
@@ -78,14 +81,23 @@ function Contact() {
     }
 
     setErrors({});
-    const { name, email, subject, message } = parsed.data;
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    toast.success("Opening your email app to send the message.");
-    e.currentTarget.reset();
+    setSending(true);
+    try {
+      const result = await send({ data: parsed.data });
+      if (result.ok) {
+        toast.success("Thank you — your message has been sent to our team.");
+        formEl.reset();
+      } else {
+        toast.error(result.error);
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(`Something went wrong. Please email us at ${CONTACT_EMAIL}.`);
+    } finally {
+      setSending(false);
+    }
   }
+
 
   return (
     <>
