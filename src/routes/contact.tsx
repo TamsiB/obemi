@@ -34,7 +34,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const CONTACT_EMAIL = "info@obemi.co.ke";
-const CONTACT_PHONE = "0721874211";
+const CONTACT_PHONE = "0119086181";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100, "Name is too long"),
