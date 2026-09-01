@@ -17,7 +17,9 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Email service is not configured." };
     }
 
-    const to = process.env["CONTACT_TO_EMAIL"] ?? "info@obemi.co.ke";
+    // Until obemi.co.ke is verified with the email provider, deliveries must go to
+    // the account owner's address. Set CONTACT_TO_EMAIL once the domain is verified.
+    const to = process.env["CONTACT_TO_EMAIL"] ?? "tamsibela@gmail.com";
     const from = process.env["CONTACT_FROM_EMAIL"] ?? "Obemi Website <onboarding@resend.dev>";
 
     const escape = (value: string) =>
