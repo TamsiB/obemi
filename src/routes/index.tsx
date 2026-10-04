@@ -249,6 +249,8 @@ function Home() {
         </div>
       </Section>
 
+      <Slideshow />
+
       <div className="bg-forest">
         <Section>
           <Reveal>
