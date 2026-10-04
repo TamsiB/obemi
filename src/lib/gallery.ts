@@ -32,16 +32,16 @@ export const GALLERY: GalleryGroup[] = [
     items: [p1, p2, p3, p4, p5].map((a) => ({ url: a.url })),
   },
   {
+    eyebrow: "Drought Response",
+    title: "Food relief in Iltilal villages",
+    caption: "Here , we went to donate foodstuffs at Iltilal villages during drought",
+    items: [p6, p7, p8, p9, p10].map((a) => ({ url: a.url })),
+  },
+  {
     eyebrow: "School Mentorship",
     title: "Empowering learners at Entonet",
     caption:
       "In collaboration with Entaisere Community Organization, at Entonet Comprehensive Primary School to give out pads, plant trees and mentor the learners while also speaking to teachers. Our mentees from KMTC loitokitok participated",
     items: [p11, p12, p13, p14, p15, p16].map((a) => ({ url: a.url })),
-  },
-  {
-    eyebrow: "Drought Response",
-    title: "Food relief in Iltilal villages",
-    caption: "Here , we went to donate foodstuffs at Iltilal villages during drought",
-    items: [p6, p7, p8, p9, p10].map((a) => ({ url: a.url })),
   },
 ];
