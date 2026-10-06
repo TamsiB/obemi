@@ -108,8 +108,62 @@ function Partners() {
               </div>
             </Reveal>
           </div>
+      </Section>
+      </div>
+
+      <div className="bg-cream">
+        <Section>
+          <SectionHeading
+            eyebrow="Partner With Us"
+            title="Support a campaign"
+            lead="Every contribution goes directly to community-led work in Loitokitok — restoring land, training young people and standing with families in need. Choose a campaign and give what you can."
+            centered
+          />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+            {DONATION_CAMPAIGNS.map((campaign, i) => (
+              <Reveal key={campaign.title} delay={i * 80}>
+                <article className="flex h-full flex-col rounded-sm border border-border bg-card p-8 shadow-soft card-lift">
+                  <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-sm bg-accent text-accent-foreground">
+                    <campaign.icon className="size-5" />
+                  </span>
+                  <h3 className="mt-5 font-display text-2xl text-foreground">
+                    {campaign.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {campaign.body}
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="mt-7 inline-flex w-fit items-center rounded-sm bg-forest px-6 py-3 text-[0.75rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    Donate
+                  </Link>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={120}>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-muted-foreground">
+              To give directly or discuss a partnership, reach us at{" "}
+              <a
+                href="tel:0119086181"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                0119 086 181
+              </a>{" "}
+              or{" "}
+              <a
+                href="mailto:info@obemi.co.ke"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                info@obemi.co.ke
+              </a>
+              .
+            </p>
+          </Reveal>
         </Section>
       </div>
+
 
       <Section>
         <Reveal>
