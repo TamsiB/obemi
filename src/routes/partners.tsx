@@ -4,6 +4,29 @@ import { PageHero, Section, SectionHeading } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { NATIONAL_PRIORITIES, PARTNERS, SDGS } from "@/lib/content";
 
+const DONATION_CAMPAIGNS = [
+  {
+    icon: Sprout,
+    title: "Rangeland & Tree Restoration",
+    body: "Help restore degraded rangelands by funding community-led tree planting, reseeding of native trees and fruits, and wildlife corridor protection across the Amboseli ecosystem.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Hospitality & Regeneration Academy",
+    body: "Sponsor an underserved young person through our vocational training centre, equipping them with practical skills for the green economy and a pathway to employment.",
+  },
+  {
+    icon: Heart,
+    title: "Family & Drought Relief",
+    body: "Support the distribution of foodstuffs and essentials to vulnerable families in Loitokitok and Iltilal villages during drought, delivered through community structures.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Girls' Mentorship & Community Outreach",
+    body: "Fund mentorship, school outreach and essential supplies — like the sanitary towel drives held with Entaisere Community Organization at Entonet Comprehensive Primary School.",
+  },
+];
+
 export const Route = createFileRoute("/partners")({
   head: () => ({
     meta: [
