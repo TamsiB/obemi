@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Handshake } from "lucide-react";
+import { Handshake, HeartHandshake, Sprout, GraduationCap, Heart } from "lucide-react";
 import { PageHero, Section, SectionHeading } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import { NATIONAL_PRIORITIES, PARTNERS, SDGS } from "@/lib/content";
