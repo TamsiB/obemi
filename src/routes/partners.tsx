@@ -34,13 +34,13 @@ export const Route = createFileRoute("/partners")({
       {
         name: "description",
         content:
-          "Obemi collaborates with local communities, the County Government of Kajiado, conservation organisations, TVET institutions, tourism stakeholders, development partners and impact investors.",
+          "Partner with Obemi CBO — collaborate with local communities, the County Government of Kajiado, conservation organisations, TVET institutions and tourism stakeholders, or support a donation campaign restoring land and empowering youth in Loitokitok.",
       },
       { property: "og:title", content: "Our Partners — Obemi CBO" },
       {
         property: "og:description",
         content:
-          "Partnerships that advance conservation, sustainable development and shared learning in the Amboseli ecosystem.",
+          "Support a donation campaign or partner with a community-led model of regeneration in the Amboseli ecosystem.",
       },
     ],
   }),
