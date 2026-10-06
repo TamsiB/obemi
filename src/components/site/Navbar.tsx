@@ -60,7 +60,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
-            to="/partners"
+            to="/partner-with-us"
             className="hidden rounded-sm bg-forest px-5 py-2.5 text-[0.75rem] font-bold tracking-[0.14em] text-primary-foreground uppercase shadow-soft transition-transform duration-300 hover:-translate-y-0.5 md:inline-flex"
           >
             Partner With Us

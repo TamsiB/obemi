@@ -15,6 +15,7 @@ import { Route as CommitmentRouteImport } from './routes/commitment'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as PartnerWithUsRouteImport } from './routes/partner-with-us'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PillarsRouteImport } from './routes/pillars'
 import { Route as TheoryOfChangeRouteImport } from './routes/theory-of-change'
@@ -50,6 +51,11 @@ const ImpactRoute = ImpactRouteImport.update({
   path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnerWithUsRoute = PartnerWithUsRouteImport.update({
+  id: '/partner-with-us',
+  path: '/partner-with-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/partner-with-us': typeof PartnerWithUsRoute
   '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/partner-with-us': typeof PartnerWithUsRoute
   '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/impact': typeof ImpactRoute
+  '/partner-with-us': typeof PartnerWithUsRoute
   '/partners': typeof PartnersRoute
   '/pillars': typeof PillarsRoute
   '/theory-of-change': typeof TheoryOfChangeRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/impact'
+    | '/partner-with-us'
     | '/partners'
     | '/pillars'
     | '/theory-of-change'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/impact'
+    | '/partner-with-us'
     | '/partners'
     | '/pillars'
     | '/theory-of-change'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/gallery'
     | '/impact'
+    | '/partner-with-us'
     | '/partners'
     | '/pillars'
     | '/theory-of-change'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   ImpactRoute: typeof ImpactRoute
+  PartnerWithUsRoute: typeof PartnerWithUsRoute
   PartnersRoute: typeof PartnersRoute
   PillarsRoute: typeof PillarsRoute
   TheoryOfChangeRoute: typeof TheoryOfChangeRoute
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partner-with-us': {
+      id: '/partner-with-us'
+      path: '/partner-with-us'
+      fullPath: '/partner-with-us'
+      preLoaderRoute: typeof PartnerWithUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/partners': {
       id: '/partners'
       path: '/partners'
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   ImpactRoute: ImpactRoute,
+  PartnerWithUsRoute: PartnerWithUsRoute,
   PartnersRoute: PartnersRoute,
   PillarsRoute: PillarsRoute,
   TheoryOfChangeRoute: TheoryOfChangeRoute,
