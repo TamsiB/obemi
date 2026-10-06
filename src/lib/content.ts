@@ -12,6 +12,7 @@ export const NAV = [
   { to: "/theory-of-change", label: "Theory of Change" },
   { to: "/impact", label: "Our Impact" },
   { to: "/partners", label: "Our Partners" },
+  { to: "/partner-with-us", label: "Partner With Us" },
   { to: "/commitment", label: "Our Commitment" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact Us" },
