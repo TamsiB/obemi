@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HeartHandshake, Sprout, GraduationCap, Heart, Landmark, Copy, Check } from "lucide-react";
-import { toast } from "sonner";
+import { HeartHandshake, Sprout, GraduationCap, Heart, Landmark } from "lucide-react";
 import { useState } from "react";
 import { PageHero, Section, SectionHeading } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
+import { DonateDialog } from "@/components/site/DonateDialog";
+import { BankDetailsList } from "@/components/site/BankDetails";
 
 const DONATION_CAMPAIGNS = [
   {
@@ -28,45 +29,6 @@ const DONATION_CAMPAIGNS = [
   },
 ];
 
-const BANK_DETAILS = [
-  { label: "Bank", value: "STANBIC BANK" },
-  { label: "Branch", value: "Two Rivers Mall Branch" },
-  { label: "Account Name", value: "OBEMI INVESTMENTS" },
-  { label: "Pay Bill", value: "600100" },
-  { label: "Account Number", value: "0100007176443" },
-];
-
-function CopyButton({ value, label }: { value: string; label: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(value);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = value;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    toast.success(`${label} copied to clipboard`);
-    window.setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      aria-label={`Copy ${label}`}
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.12em] text-muted-foreground uppercase transition-colors duration-300 hover:border-primary hover:text-primary"
-    >
-      {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-      {copied ? "Copied" : "Copy"}
-    </button>
-  );
-}
 
 export const Route = createFileRoute("/partner-with-us")({
   head: () => ({
@@ -89,6 +51,8 @@ export const Route = createFileRoute("/partner-with-us")({
 });
 
 function PartnerWithUs() {
+  const [donateOpen, setDonateOpen] = useState(false);
+
   return (
     <>
       <PageHero
@@ -117,12 +81,13 @@ function PartnerWithUs() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {campaign.body}
                 </p>
-                <Link
-                  to="/contact"
+                <button
+                  type="button"
+                  onClick={() => setDonateOpen(true)}
                   className="mt-7 inline-flex w-fit items-center rounded-sm bg-forest px-6 py-3 text-[0.75rem] font-bold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   Donate
-                </Link>
+                </button>
               </article>
             </Reveal>
           ))}
@@ -170,24 +135,7 @@ function PartnerWithUs() {
                 </p>
               </div>
             </div>
-            <dl className="divide-y divide-border">
-              {BANK_DETAILS.map((detail) => (
-                <div
-                  key={detail.label}
-                  className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-6 py-4 lg:px-8"
-                >
-                  <div className="min-w-0">
-                    <dt className="text-[0.6875rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
-                      {detail.label}
-                    </dt>
-                    <dd className="mt-1 truncate font-display text-lg text-foreground md:text-xl">
-                      {detail.value}
-                    </dd>
-                  </div>
-                  <CopyButton value={detail.value} label={detail.label} />
-                </div>
-              ))}
-            </dl>
+            <BankDetailsList />
             <p className="border-t border-border bg-muted/50 px-6 py-4 text-center text-xs leading-relaxed text-muted-foreground lg:px-8">
               After making your transfer, kindly share the confirmation with us at{" "}
               <a
@@ -229,6 +177,8 @@ function PartnerWithUs() {
           </div>
         </Reveal>
       </Section>
+
+      <DonateDialog open={donateOpen} onOpenChange={setDonateOpen} />
     </>
   );
 }
