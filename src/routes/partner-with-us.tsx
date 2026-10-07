@@ -149,6 +149,60 @@ function PartnerWithUs() {
       </Section>
 
       <Section>
+        <SectionHeading
+          eyebrow="Bank Transfer"
+          title="Donate via Bank Transfer"
+          lead="You can support our work by making a direct bank transfer using the details below."
+          centered
+        />
+        <Reveal delay={100}>
+          <div className="mx-auto mt-12 max-w-2xl overflow-hidden rounded-sm border border-border bg-card shadow-soft">
+            <div className="flex items-center gap-4 bg-forest px-6 py-5 lg:px-8">
+              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-sm bg-primary-foreground/10 text-primary-foreground">
+                <Landmark className="size-5" />
+              </span>
+              <div>
+                <p className="text-[0.6875rem] font-bold tracking-[0.22em] text-primary-foreground/70 uppercase">
+                  Official Account
+                </p>
+                <p className="font-display text-xl text-primary-foreground">
+                  Obemi CBO — Donations
+                </p>
+              </div>
+            </div>
+            <dl className="divide-y divide-border">
+              {BANK_DETAILS.map((detail) => (
+                <div
+                  key={detail.label}
+                  className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-6 py-4 lg:px-8"
+                >
+                  <div className="min-w-0">
+                    <dt className="text-[0.6875rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+                      {detail.label}
+                    </dt>
+                    <dd className="mt-1 truncate font-display text-lg text-foreground md:text-xl">
+                      {detail.value}
+                    </dd>
+                  </div>
+                  <CopyButton value={detail.value} label={detail.label} />
+                </div>
+              ))}
+            </dl>
+            <p className="border-t border-border bg-muted/50 px-6 py-4 text-center text-xs leading-relaxed text-muted-foreground lg:px-8">
+              After making your transfer, kindly share the confirmation with us at{" "}
+              <a
+                href="mailto:info@obemi.co.ke"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                info@obemi.co.ke
+              </a>{" "}
+              so we can thank you and receipt your gift.
+            </p>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Section>
         <Reveal>
           <div className="relative overflow-hidden rounded-sm bg-forest p-10 text-center shadow-lift lg:p-16">
             <div
