@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HeartHandshake, Sprout, GraduationCap, Heart } from "lucide-react";
+import { HeartHandshake, Sprout, GraduationCap, Heart, Landmark, Copy, Check } from "lucide-react";
+import { toast } from "sonner";
+import { useState } from "react";
 import { PageHero, Section, SectionHeading } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -25,6 +27,46 @@ const DONATION_CAMPAIGNS = [
     body: "Fund mentorship, school outreach and essential supplies — like the sanitary towel drives held with Entaisere Community Organization at Entonet Comprehensive Primary School.",
   },
 ];
+
+const BANK_DETAILS = [
+  { label: "Bank", value: "STANBIC BANK" },
+  { label: "Branch", value: "Two Rivers Mall Branch" },
+  { label: "Account Name", value: "OBEMI INVESTMENTS" },
+  { label: "Pay Bill", value: "600100" },
+  { label: "Account Number", value: "0100007176443" },
+];
+
+function CopyButton({ value, label }: { value: string; label: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = value;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    toast.success(`${label} copied to clipboard`);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      aria-label={`Copy ${label}`}
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-sm border border-border bg-background px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.12em] text-muted-foreground uppercase transition-colors duration-300 hover:border-primary hover:text-primary"
+    >
+      {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+      {copied ? "Copied" : "Copy"}
+    </button>
+  );
+}
 
 export const Route = createFileRoute("/partner-with-us")({
   head: () => ({
@@ -103,6 +145,60 @@ function PartnerWithUs() {
             </a>
             .
           </p>
+        </Reveal>
+      </Section>
+
+      <Section>
+        <SectionHeading
+          eyebrow="Bank Transfer"
+          title="Donate via Bank Transfer"
+          lead="You can support our work by making a direct bank transfer using the details below."
+          centered
+        />
+        <Reveal delay={100}>
+          <div className="mx-auto mt-12 max-w-2xl overflow-hidden rounded-sm border border-border bg-card shadow-soft">
+            <div className="flex items-center gap-4 bg-forest px-6 py-5 lg:px-8">
+              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-sm bg-primary-foreground/10 text-primary-foreground">
+                <Landmark className="size-5" />
+              </span>
+              <div>
+                <p className="text-[0.6875rem] font-bold tracking-[0.22em] text-primary-foreground/70 uppercase">
+                  Official Account
+                </p>
+                <p className="font-display text-xl text-primary-foreground">
+                  Obemi CBO — Donations
+                </p>
+              </div>
+            </div>
+            <dl className="divide-y divide-border">
+              {BANK_DETAILS.map((detail) => (
+                <div
+                  key={detail.label}
+                  className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-6 py-4 lg:px-8"
+                >
+                  <div className="min-w-0">
+                    <dt className="text-[0.6875rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+                      {detail.label}
+                    </dt>
+                    <dd className="mt-1 truncate font-display text-lg text-foreground md:text-xl">
+                      {detail.value}
+                    </dd>
+                  </div>
+                  <CopyButton value={detail.value} label={detail.label} />
+                </div>
+              ))}
+            </dl>
+            <p className="border-t border-border bg-muted/50 px-6 py-4 text-center text-xs leading-relaxed text-muted-foreground lg:px-8">
+              After making your transfer, kindly share the confirmation with us at{" "}
+              <a
+                href="mailto:info@obemi.co.ke"
+                className="font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                info@obemi.co.ke
+              </a>{" "}
+              so we can thank you and receipt your gift.
+            </p>
+          </div>
         </Reveal>
       </Section>
 
