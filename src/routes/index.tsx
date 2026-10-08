@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Leaf, GraduationCap, Store, PawPrint } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Layout";
-import { Slideshow } from "@/components/site/Slideshow";
 import logo from "@/assets/obemi-logo.jpg.asset.json";
 import { CORE_VALUES, HUB_COMPONENTS, IMPACT_AIMS, PILLARS } from "@/lib/content";
 
@@ -249,9 +248,6 @@ function Home() {
         </div>
       </Section>
 
-      <Slideshow />
-
-      <div className="bg-forest">
         <Section>
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
