@@ -25,19 +25,9 @@ jobs:
       - name: Build website
         run: npm run build
 
-      - name: Find generated files
-        run: |
-          echo "=== ROOT DIRECTORY ==="
-          ls -la
-          echo ""
-          echo "=== GENERATED DIRECTORIES ==="
-          find . -maxdepth 5 -type d \
-            -not -path './node_modules*' \
-            -not -path './.git*' \
-            | sort
-          echo ""
-          echo "=== GENERATED FILES ==="
-          find . -maxdepth 5 -type f \
-            -not -path './node_modules*' \
-            -not -path './.git*' \
-            | sort | head -200
+      - name: Upload website files
+        uses: actions/upload-artifact@v4
+        with:
+          name: obemi-website
+          path: .output/public/
+          if-no-files-found: error
