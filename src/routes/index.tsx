@@ -248,6 +248,7 @@ function Home() {
         </div>
       </Section>
 
+      <div className="bg-forest">
         <Section>
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
