@@ -25,8 +25,16 @@ jobs:
       - name: Build website
         run: npm run build
 
+      - name: Show build files
+        run: |
+          echo "Build folders:"
+          find . -maxdepth 3 -type d \( -name "dist" -o -name ".output" \) -print
+          echo "Output files:"
+          find .output -maxdepth 3 -type f 2>/dev/null | head -50
+
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: obemi-build
-          path: dist
+          path: .output/
+          if-no-files-found: error
