@@ -19,7 +19,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
 
     // Until obemi.co.ke is verified with the email provider, deliveries must go to
     // the account owner's address. Set CONTACT_TO_EMAIL once the domain is verified.
-    const to = process.env["CONTACT_TO_EMAIL"] ?? "tamsibela@gmail.com";
+    const to = process.env["CONTACT_TO_EMAIL"] ?? "info@obemi.org";
     const from = process.env["CONTACT_FROM_EMAIL"] ?? "Obemi Website <onboarding@resend.dev>";
 
     const escape = (value: string) =>
