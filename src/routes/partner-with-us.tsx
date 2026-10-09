@@ -103,10 +103,10 @@ function PartnerWithUs() {
             </a>{" "}
             or{" "}
             <a
-              href="mailto:info@obemi.co.ke"
+              href="mailto:info@obemi.org"
               className="font-semibold text-primary underline-offset-4 hover:underline"
             >
-              info@obemi.co.ke
+              info@obemi.org
             </a>
             .
           </p>
@@ -139,10 +139,10 @@ function PartnerWithUs() {
             <p className="border-t border-border bg-muted/50 px-6 py-4 text-center text-xs leading-relaxed text-muted-foreground lg:px-8">
               After making your transfer, kindly share the confirmation with us at{" "}
               <a
-                href="mailto:info@obemi.co.ke"
+                href="mailto:info@obemi.org"
                 className="font-semibold text-primary underline-offset-4 hover:underline"
               >
-                info@obemi.co.ke
+                info@obemi.org
               </a>{" "}
               so we can thank you and receipt your gift.
             </p>

@@ -17,15 +17,15 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { ok: false as const, error: "Email service is not configured." };
     }
 
-    // Until obemi.co.ke is verified with the email provider, deliveries must go to
+    // Until obemi.org is verified with the email provider, deliveries must go to
     // the account owner's address. Set CONTACT_TO_EMAIL once the domain is verified.
-    const to = process.env["CONTACT_TO_EMAIL"] ?? "tamsibela@gmail.com";
+    const to = process.env["CONTACT_TO_EMAIL"] ?? "info@obemi.org";
     const from = process.env["CONTACT_FROM_EMAIL"] ?? "Obemi Website <onboarding@resend.dev>";
 
     const escape = (value: string) =>
       value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    const response = await fetch("https://api.resend.com/emails", {
+    const post = (recipient: string) => fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       },
       body: JSON.stringify({
         from,
-        to: [to],
+        to: [recipient],
         reply_to: data.email,
         subject: `[Obemi website] ${data.subject}`,
         html: `<div style="font-family:Arial,sans-serif;color:#1c1c1c">
@@ -46,6 +46,10 @@ export const sendContactMessage = createServerFn({ method: "POST" })
         </div>`,
       }),
     });
+
+    let response = await post(to);
+    // Until obemi.org is verified with Resend, only the account owner can receive mail.
+    if (response.status === 403) response = await post("tamsibela@gmail.com");
 
     if (!response.ok) {
       const body = await response.text();

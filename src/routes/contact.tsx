@@ -33,7 +33,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const CONTACT_EMAIL = "info@obemi.co.ke";
+const CONTACT_EMAIL = "info@obemi.org";
 const CONTACT_PHONE = "0119086181";
 
 const schema = z.object({
