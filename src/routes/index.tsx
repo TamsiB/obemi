@@ -8,13 +8,13 @@ import { CORE_VALUES, HUB_COMPONENTS, IMPACT_AIMS, PILLARS } from "@/lib/content
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Obemi CBO — Restore. Empower. Thrive." },
+      { title: "Obemi CBO" },
       {
         name: "description",
         content:
           "Obemi is a community-led non-profit restoring ecosystems, empowering communities and building sustainable livelihoods in the Amboseli ecosystem, Loitokitok, Kenya.",
       },
-      { property: "og:title", content: "Obemi CBO — Restore. Empower. Thrive." },
+      { property: "og:title", content: "Obemi CBO" },
       {
         property: "og:description",
         content:

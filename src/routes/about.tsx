@@ -6,7 +6,7 @@ import { CORE_VALUES, GEOGRAPHY } from "@/lib/content";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — Obemi Community Based Organisation" },
+      { title: "About Us — Obemi CBO" },
       {
         name: "description",
         content:
