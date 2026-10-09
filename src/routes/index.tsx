@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Leaf, GraduationCap, Store, PawPrint } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { Section, SectionHeading } from "@/components/site/Layout";
-import logo from "@/assets/obemi-logo.jpg.asset.json";
+const logo = { url: "/images/obemi-logo.jpg" };
 import { CORE_VALUES, HUB_COMPONENTS, IMPACT_AIMS, PILLARS } from "@/lib/content";
 
 export const Route = createFileRoute("/")({

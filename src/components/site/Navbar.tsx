@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/obemi-logo.jpg.asset.json";
+const logo = { url: "/images/obemi-logo.jpg" };
 import { NAV } from "@/lib/content";
 import { cn } from "@/lib/utils";
 

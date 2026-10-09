@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import logo from "@/assets/obemi-logo.jpg.asset.json";
+const logo = { url: "/images/obemi-logo.jpg" };
 import { NAV, ORG } from "@/lib/content";
 
 export function Footer() {
