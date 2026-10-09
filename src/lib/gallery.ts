@@ -1,19 +1,19 @@
-import p1 from "@/assets/IMG-20260729-WA0007.jpg.asset.json";
-import p2 from "@/assets/IMG-20260729-WA0008.jpg.asset.json";
-import p3 from "@/assets/IMG-20260729-WA0006.jpg.asset.json";
-import p4 from "@/assets/IMG-20260729-WA0013.jpg.asset.json";
-import p5 from "@/assets/IMG-20260729-WA0015.jpg.asset.json";
-import p6 from "@/assets/IMG-20260729-WA0020.jpg.asset.json";
-import p7 from "@/assets/IMG-20260729-WA0022.jpg.asset.json";
-import p8 from "@/assets/IMG-20260729-WA0024.jpg.asset.json";
-import p9 from "@/assets/IMG-20260729-WA0028.jpg.asset.json";
-import p10 from "@/assets/IMG-20260729-WA0036.jpg.asset.json";
-import p11 from "@/assets/IMG-20261004-WA0004.jpg.asset.json";
-import p12 from "@/assets/IMG-20261004-WA0005.jpg.asset.json";
-import p13 from "@/assets/IMG-20261004-WA0006.jpg.asset.json";
-import p14 from "@/assets/IMG-20261004-WA0008.jpg.asset.json";
-import p15 from "@/assets/IMG-20261004-WA0009.jpg.asset.json";
-import p16 from "@/assets/IMG-20261004-WA0010.jpg.asset.json";
+const p1 = { url: "/images/IMG-20260729-WA0007.jpg" };
+const p2 = { url: "/images/IMG-20260729-WA0008.jpg" };
+const p3 = { url: "/images/IMG-20260729-WA0006.jpg" };
+const p4 = { url: "/images/IMG-20260729-WA0013.jpg" };
+const p5 = { url: "/images/IMG-20260729-WA0015.jpg" };
+const p6 = { url: "/images/IMG-20260729-WA0020.jpg" };
+const p7 = { url: "/images/IMG-20260729-WA0022.jpg" };
+const p8 = { url: "/images/IMG-20260729-WA0024.jpg" };
+const p9 = { url: "/images/IMG-20260729-WA0028.jpg" };
+const p10 = { url: "/images/IMG-20260729-WA0036.jpg" };
+const p11 = { url: "/images/IMG-20261004-WA0004.jpg" };
+const p12 = { url: "/images/IMG-20261004-WA0005.jpg" };
+const p13 = { url: "/images/IMG-20261004-WA0006.jpg" };
+const p14 = { url: "/images/IMG-20261004-WA0008.jpg" };
+const p15 = { url: "/images/IMG-20261004-WA0009.jpg" };
+const p16 = { url: "/images/IMG-20261004-WA0010.jpg" };
 
 export type GalleryItem = { url: string };
 
